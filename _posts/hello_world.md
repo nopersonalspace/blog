@@ -1,7 +1,7 @@
 ---
-title: 'Learn How to Pre-render Pages Using Static Generation with Next.js'
+title: 'Static Site Generation with Next.js'
 excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
-coverImage: '/assets/blog/hello-world/cover.jpg'
+coverImage: 'images/test.jpg'
 date: '2020-03-16T05:35:07.322Z'
 author:
 name: Tim Neutkens
@@ -23,5 +23,12 @@ Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris 
   - This is a nested list item
 
 **Here is an image of a thing!**
+
+```python
+# This is a code block
+test = 'This is a string'
+def test_function():
+    print(test)
+```
 
 ![image](https://d33wubrfki0l68.cloudfront.net/f1f475a6fda1c2c4be4cac04033db5c3293032b4/513a4/assets/images/markdown-mark-white.svg)

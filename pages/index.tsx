@@ -1,44 +1,56 @@
-import styled from "@emotion/styled";
+import {
+  Card,
+  FlexColumnCenterHorizontal,
+  HeroPost,
+  NavBar,
+} from "@main/components";
 import { getAllPosts, Post } from "@main/lib";
-import { test } from "@main/utils";
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-
-// import styles from "../styles/Home.module.css";
-
-const TestComponent = styled.div`
-  background-color: ${(props) => props.theme.color.primary};
-`;
+import { useRouter } from "next/router";
 
 export interface HomePageProps {
   /** A list of all posts */
   allPosts: Post[];
 }
 
-const Home: NextPage<HomePageProps> = ({ allPosts }) => (
-  <span>
-    <TestComponent>{test}</TestComponent>
-    <h1>Hello Next.js</h1>
-  </span>
-);
+const Home: NextPage<HomePageProps> = ({ allPosts }) => {
+  const router = useRouter();
+
+  return (
+    <div>
+      <NavBar>
+        <div style={{ margin: "8px" }}>
+          <HeroPost post={allPosts[0]} />
+          <FlexColumnCenterHorizontal>
+            {allPosts.map((post, key) => (
+              <Card
+                key={key}
+                style={{ maxWidth: "300px" }}
+                onClick={() => router.push(`/posts/${post.slug}`)}
+              >
+                <h3>{post.title}</h3>
+                <p>{post.excerpt}</p>
+              </Card>
+            ))}
+          </FlexColumnCenterHorizontal>
+        </div>
+      </NavBar>
+    </div>
+  );
+};
 
 export default Home;
 
-/**
- *
- */
-export async function getStaticProps() {
-  const allPosts = getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "author",
-    "coverImage",
-    "excerpt",
-  ]);
+export const getStaticProps = (): {
+  /** Pass in posts as props */
+  props: {
+    /** All posts */
+    allPosts: Post[];
+  };
+} => {
+  const allPosts = getAllPosts();
 
   return {
     props: { allPosts },
   };
-}
+};

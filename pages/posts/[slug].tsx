@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { FlexColumnCenterBoth } from "@main/components";
+import { FlexColumnCenterBoth, NavBar } from "@main/components";
 import { getAllPosts, getPostBySlug, markdownToHtml, Post } from "@main/lib";
 import { StyleUtils } from "@main/utils";
 import type { NextPage } from "next";
@@ -25,23 +25,22 @@ const PostPage: NextPage<PostPageProps> = ({ post }) => {
   const { title, date, content } = post;
   /* eslint-disable react/no-danger */
   return (
-    <FlexColumnCenterBoth style={{ width: "100%" }}>
-      <PostContainer>
-        <h1>{title}</h1>
-        <p>{date}</p>
-        <div>
-          <div dangerouslySetInnerHTML={{ __html: content }} />
-        </div>
-      </PostContainer>
-    </FlexColumnCenterBoth>
+    <NavBar menuMode>
+      <FlexColumnCenterBoth style={{ width: "100%" }}>
+        <PostContainer>
+          <h1>{title}</h1>
+          <p>{date}</p>
+          <div>
+            <div dangerouslySetInnerHTML={{ __html: content }} />
+          </div>
+        </PostContainer>
+      </FlexColumnCenterBoth>
+    </NavBar>
   );
   /* eslint-enable react/no-danger */
 };
 export default PostPage;
 
-/**
- * @returns - The post to display
- */
 export const getStaticProps = async ({
   params,
 }: {
@@ -78,10 +77,21 @@ export const getStaticProps = async ({
 };
 
 /**
- *
+ * Get all the static paths of all posts
  */
-export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+export function getStaticPaths(): {
+  /** The paths of all posts */
+  paths: {
+    /** The params from the url */
+    params: {
+      /** The slug to display */
+      slug: string;
+    };
+  }[];
+  /** If this is a fallback */
+  fallback: boolean;
+} {
+  const posts = getAllPosts();
 
   return {
     paths: posts.map((post) => ({
