@@ -38,6 +38,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:eslint-comments/recommended",
+    "plugin:@next/eslint-plugin-next/recommended",
     "preact",
     "prettier",
   ],

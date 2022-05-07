@@ -6,11 +6,6 @@ import { Post } from "./apiTypes";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
-/**
- * Get all of the slugs (filenames) for the posts in the posts directory.
- *
- * @returns - an array of slugs
- */
 export const getPostSlugs = (): string[] => fs.readdirSync(postsDirectory);
 
 export const getPostBySlug = (slug: string): Post => {
