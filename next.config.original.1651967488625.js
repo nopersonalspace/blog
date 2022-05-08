@@ -2,7 +2,7 @@
  * @param {...any} args
  */
 module.exports = function(...args) {
-  let original = require('./next.config.original.1651967488625.js');
+  let original = require('./next.config.original.1651966084959.js');
   const finalConfig = {};
   const target = { target: 'serverless' };
   if (typeof original === 'function' && original.constructor.name === 'AsyncFunction') {

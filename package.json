@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "pre-commit && components-v1 --org=harrismcc"
+    "deploy": "pre-commit && serverless --org=harrismcc"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
