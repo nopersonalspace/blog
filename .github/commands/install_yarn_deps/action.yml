@@ -13,10 +13,9 @@ runs:
       id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
       with:
         path: |
-          .yarn/cache
-          .yarn/unplugged
-          .yarn/install-state.gz
-          .pnp.cjs
+          **/node_modules
+          **/.eslintcache
+          ${{ steps.yarn-cache-dir-path.outputs.dir }}
         key: ${{ runner.os }}-${{ runner.arch }}-yarn-v2-${{ hashFiles('**/yarn.lock', '**/package.json') }}
         restore-keys: |
           ${{ runner.os }}-${{ runner.arch }}-yarn-v2-
