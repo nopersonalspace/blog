@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - uses: ./.github/commands/install_yarn_deps
       - uses: actions/setup-python@v2
       - uses: pre-commit/action@v2.0.3
   deploy:
