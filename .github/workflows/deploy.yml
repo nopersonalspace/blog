@@ -16,9 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 14.x, 16.x ]
+        node-version: [ 16.x, 17.0 ]
     steps:
       - uses: actions/checkout@v2
+      - uses: ./.github/commands/install_yarn_deps
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
