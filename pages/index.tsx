@@ -1,6 +1,7 @@
 import {
   Card,
   FlexColumnCenterHorizontal,
+  FlexColumnCenterVertical,
   HeroPost,
   NavBar,
 } from "@main/components";
@@ -19,21 +20,23 @@ const Home: NextPage<HomePageProps> = ({ allPosts }) => {
   return (
     <div>
       <NavBar>
-        <div style={{ margin: "8px" }}>
-          <HeroPost post={allPosts[0]} />
-          <FlexColumnCenterHorizontal>
-            {allPosts.map((post, key) => (
-              <Card
-                key={key}
-                style={{ maxWidth: "300px" }}
-                onClick={() => router.push(`/posts/${post.slug}`)}
-              >
-                <h3>{post.title}</h3>
-                <p>{post.excerpt}</p>
-              </Card>
-            ))}
-          </FlexColumnCenterHorizontal>
-        </div>
+        <FlexColumnCenterVertical>
+          <div style={{ margin: "8px", width: "100%", maxWidth: "1200px" }}>
+            <HeroPost post={allPosts[0]} />
+            <FlexColumnCenterHorizontal>
+              {allPosts.map((post, key) => (
+                <Card
+                  key={key}
+                  style={{ maxWidth: "300px" }}
+                  onClick={() => router.push(`/posts/${post.slug}`)}
+                >
+                  <h3>{post.title}</h3>
+                  <p>{post.excerpt}</p>
+                </Card>
+              ))}
+            </FlexColumnCenterHorizontal>
+          </div>
+        </FlexColumnCenterVertical>
       </NavBar>
     </div>
   );

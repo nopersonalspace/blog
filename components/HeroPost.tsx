@@ -31,7 +31,7 @@ export const HeroPost: React.FC<HeroPostProps> = ({ post }) => {
 
   return (
     <StyledHeroContainer backgroundImage={post.coverImage}>
-      <div style={{ maxWidth: "600" }}>
+      <div style={{ maxWidth: "600px" }}>
         <h1>{post.title}</h1>
         <h3>{post.excerpt}</h3>
         <Button
