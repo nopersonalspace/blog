@@ -11,12 +11,6 @@ jobs:
       - uses: ./.github/commands/install_yarn_deps
       - run: yarn tsc --build
 
-  pre-commit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-python@v2
-      - uses: pre-commit/action@v2.0.3
   deploy:
     name: deploy
     runs-on: ubuntu-latest
