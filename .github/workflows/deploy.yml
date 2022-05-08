@@ -1,13 +1,13 @@
-name: Deploy master branch
+name: Deploy main branch
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build-typescript:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - uses: ./.github/commands/install_yarn_deps
       - run: yarn tsc --build
 
